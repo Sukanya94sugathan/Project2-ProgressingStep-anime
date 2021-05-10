@@ -16,7 +16,7 @@ body{
 .container{
     text-align: center;
 }
-.progress_container{
+.progress-container{
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -26,14 +26,45 @@ body{
     width: 450px;
     /* width property in CSS specifies the width of the element’s content area. */
 }
-.progress{
-    background-color: #0000ff;
+.progress-container::before{
+    content: ''; /*Always add this after before*/
+    background-color: lightgrey;
     position: absolute;
     top: 50%;
     height: 4px;
-    width:100%;
+    width:100%; /*if we set to 50% we could see the line , but now we don't want to,bcs that's the starting point */
     left: 0;
-    transform: translateY(-80%);/*direction is towards right and if its 50% div element will be center aligned*/
+    transform: translateY(-50%);/*direction is towards right and if its 50% div element will be center aligned*/
     z-index: -1;/*this will later take the circle that i am going to introduce, to the front of the line.
     so the line will go behind*/
+    transition: 0.4s ease;
+}
+.progress{
+    background-color: #5454ee;
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    width:50%; /*if we set to 50% we could see the line , but now we don't want to,bcs that's the starting point */
+    left: 0;
+    transform: translateY(-50%);/*direction is towards right and if its 50% div element will be center aligned*/
+    z-index: -1;/*this will later take the circle that i am going to introduce, to the front of the line.
+    so the line will go behind*/
+    transition: 0.4s ease; /*when we click on prev and next button its needs to be animated*/
+}
+.circle {
+    background-color: ghostwhite;
+    color: black;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+}
+.circle.active{
+    border-color:#5454ee ;
+}
+.btn{
+    background-color: ghostwhite;
 }
